@@ -1,0 +1,56 @@
+<div>
+  <section class="w-100 row justify-content-end">
+    <button
+      color="warn"
+      tabindex="-1"
+      matDialogClose
+      mat-icon-button
+      class="align-self-end col-2"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </section>
+
+  <form class="m-5 px-5" [formGroup]="formCustomer">
+    <input hidden type="number" class="form-control" formControlName="name" />
+
+    <mat-form-field class="col-12" appearance="outline">
+      <mat-label>Nome </mat-label>
+
+      <input matInput placeholder="Nome" formControlName="name" />
+
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="outline">
+      <mat-label> Telefone </mat-label>
+
+      <input matInput placeholder="Telefone" formControlName="telephone" />
+
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="col-12" appearance="outline">
+      <mat-label>Email</mat-label>
+
+      <input matInput placeholder="Email" formControlName="email" />
+
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </form>
+
+  <section class="w-100 row justify-content-around mt-3 mb-3">
+    <button class="col-3 btn" mat-flat-button matDialogClose [color]="'warn'">
+      <span> Cancelar </span>
+    </button>
+
+    <button
+      class="col-3 btn"
+      mat-flat-button
+      (click)="save()"
+      [color]="'primary'"
+    >
+      <span> Salvar </span>
+    </button>
+  </section>
+</div>

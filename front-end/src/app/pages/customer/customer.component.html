@@ -1,0 +1,8 @@
+<app-table
+  class="w-full"
+  [colunas]="colunas"
+  [dados]="customers$"
+  (novo)="novo($event)"
+>
+  <app-list-header title="Clientes"> </app-list-header>
+</app-table>

@@ -19,7 +19,6 @@ public class SecurityConfiguration {
             cors.configurationSource(corsConfigurationSource());
         }).addFilterBefore(new TokenAuthenticationFilter(),
                 UsernamePasswordAuthenticationFilter.class);
-        ;
 
         return http.build();
     }

@@ -1,0 +1,23 @@
+<mat-button-toggle-group
+  class="rounded-4 border-1 border-secondary me-2 me-sm-4"
+>
+  <!-- menu customer button -->
+  <mat-button-toggle
+    [routerLink]="'customer'"
+    routerLinkActive="mat-button-toggle-checked"
+  >
+    <mat-icon class="scaleIcon">people</mat-icon>
+
+    <span class="mx-2 smHidden"> Clientes </span>
+  </mat-button-toggle>
+
+  <!-- menu favorite button -->
+  <mat-button-toggle
+    [routerLink]="'product'"
+    routerLinkActive="mat-button-toggle-checked"
+  >
+    <mat-icon>view_list</mat-icon>
+
+    <span class="mx-2 smHidden"> Produtos </span>
+  </mat-button-toggle>
+</mat-button-toggle-group>

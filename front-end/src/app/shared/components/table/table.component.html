@@ -1,0 +1,72 @@
+<div class="flex flex-column w-100">
+  <div class="flex flex-wrap w-100">
+    <div class="flex row justify-content-between">
+      <div class="col-2">
+        <ng-content></ng-content>
+      </div>
+
+      <button
+        mat-flat-button
+        (click)="edit()"
+        class="col-2 align-self-center rounded-4 btn"
+      >
+        <mat-icon>library_add</mat-icon>
+
+        <span class="fw-bold"> Adicionar </span>
+      </button>
+    </div>
+
+    <table matSort mat-table class="w-100" [dataSource]="dataSource">
+      <ng-container
+        *ngFor="let item of colunas"
+        matColumnDef="{{ item?.commonKey }}"
+      >
+        <th
+          mat-header-cell
+          mat-sort-header
+          *matHeaderCellDef
+          class="mx-4 bg-danger-subtle border border-dark"
+        >
+          <span class="fw-bold fs-5">
+            {{ item?.header }}
+          </span>
+        </th>
+
+        <td
+          mat-cell
+          (click)="edit(dado)"
+          *matCellDef="let dado"
+          class="p-6 border border-dark-subtle"
+          [matTooltip]="!clickable ? '' : 'Editar'"
+          [ngClass]="{ ' hoverGray': clickable }"
+        >
+          <span
+            class="fw-bold fs-6 text-secondary"
+            [innerHTML]="getValue(dado, item?.objValue)"
+          >
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="lines"></tr>
+
+      <tr mat-row class="h-16" *matRowDef="let row; columns: lines"></tr>
+    </table>
+
+    <div
+      *ngIf="!dataSource?.data?.length"
+      style="font-size: x-large"
+      class="p-4 fw-bold text-center bg-white font border w-full"
+    >
+      <label>Nenhum item encontrado </label>
+    </div>
+
+    <!-- <mat-paginator
+      class="w-full"
+      showFirstLastButtons
+      aria-label="Selecione a página"
+      [pageSizeOptions]="[10, 25, 50, 100]"
+    >
+    </mat-paginator> -->
+  </div>
+</div>
