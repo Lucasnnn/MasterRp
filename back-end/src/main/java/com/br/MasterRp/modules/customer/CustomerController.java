@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.MasterRp.modules.customer.entity.Customer;
 import com.br.MasterRp.modules.customer.entity.dto.CustomerBasicDTO;
 import com.br.MasterRp.modules.customer.interfaces.ICustomerService;
 
@@ -26,10 +27,10 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public ResponseEntity<CustomerBasicDTO> create(@RequestBody CustomerBasicDTO customer) {
-        customer = new CustomerBasicDTO(iCustomerService.create(customer.model()));
+    public ResponseEntity<CustomerBasicDTO> create(@RequestBody Customer customer) {
+        CustomerBasicDTO dto = new CustomerBasicDTO(iCustomerService.create(customer));
 
-        return new ResponseEntity<CustomerBasicDTO>(customer, HttpStatus.OK);
+        return new ResponseEntity<CustomerBasicDTO>(dto, HttpStatus.OK);
     }
 
     @GetMapping()
@@ -47,9 +48,11 @@ public class CustomerController {
     }
 
     @PutMapping()
-    public ResponseEntity<CustomerBasicDTO> update(@RequestBody CustomerBasicDTO customer) {
-        iCustomerService.update(customer.model());
+    public ResponseEntity<CustomerBasicDTO> update(@RequestBody Customer customer) {
+        customer = iCustomerService.update(customer);
 
-        return new ResponseEntity<CustomerBasicDTO>(customer, HttpStatus.OK);
+        CustomerBasicDTO dto = new CustomerBasicDTO(customer);
+
+        return new ResponseEntity<CustomerBasicDTO>(dto, HttpStatus.OK);
     }
 }

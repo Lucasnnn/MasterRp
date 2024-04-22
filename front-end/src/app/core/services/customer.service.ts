@@ -40,7 +40,9 @@ export class CustomerService extends ApiHttpClient {
   create(body: Customer): Observable<Customer[]> {
     return this.post<Customer[]>('', body).pipe(
       tap((response) => {
-        this._customers.next(response);
+        const updatedCustomers = [...response, ...this._customers.getValue()];
+
+        this._customers.next(updatedCustomers);
       })
     );
   }
@@ -54,9 +56,17 @@ export class CustomerService extends ApiHttpClient {
   }
 
   update(body: Customer): Observable<Customer[]> {
-    return this.put<Customer[]>('asdasd', body).pipe(
-      tap((response) => {
-        this._customers.next(response);
+    return this.put<Customer[]>('', body).pipe(
+      tap(() => {
+        const updatedCustomers = this._customers.getValue().map((customer) => {
+          if (customer?.id === body?.id) {
+            return body;
+          }
+
+          return customer;
+        });
+
+        this._customers.next(updatedCustomers);
       })
     );
   }
