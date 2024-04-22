@@ -27,7 +27,7 @@ public class CustomerController {
 
     @PostMapping()
     public ResponseEntity<CustomerBasicDTO> create(@RequestBody CustomerBasicDTO customer) {
-        customer = new CustomerBasicDTO(iCustomerService.save(customer.model()));
+        customer = new CustomerBasicDTO(iCustomerService.create(customer.model()));
 
         return new ResponseEntity<CustomerBasicDTO>(customer, HttpStatus.OK);
     }

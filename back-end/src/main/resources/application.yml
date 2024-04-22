@@ -1,6 +1,3 @@
-master:
-  token: c68fa366-0b71-45d1-aed7-f0a83e0be24a
-
 spring:
   datasource:
     url: jdbc:postgresql://dpg-coi4230l5elc73d1e8i0-a.ohio-postgres.render.com/master_rp

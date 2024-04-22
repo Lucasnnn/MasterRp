@@ -7,5 +7,5 @@ public interface IPutServices<T> {
 
     T update(T entity);
 
-    T save(T entity);
+    T create(T entity);
 }

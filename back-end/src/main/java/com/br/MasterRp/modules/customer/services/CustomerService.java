@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.br.MasterRp.core.exceptions.CustomException;
 import com.br.MasterRp.modules.customer.CustomerRepository;
 import com.br.MasterRp.modules.customer.entity.Customer;
 import com.br.MasterRp.modules.customer.interfaces.ICustomerService;
@@ -32,11 +33,21 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer update(Customer entity) {
+        if (entity.getId() == null) {
+            throw new CustomException(" Not update item null id !");
+        }
+
+        Customer exist = customerRepository.findById(entity.getId()).orElse(null);
+
+        if (exist == null) {
+            throw new CustomException(" Not found customer !");
+        }
+
         return customerRepository.save(entity);
     }
 
     @Override
-    public Customer save(Customer entity) {
+    public Customer create(Customer entity) {
         return customerRepository.save(entity);
     }
 }
