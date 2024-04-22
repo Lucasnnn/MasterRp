@@ -61,14 +61,27 @@ export class CustomerComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((customer) => {
       if (customer) {
-        this._customerService.update(customer).subscribe((resp) => {
+        if (customer?.id) {
+          this._customerService.update(customer).subscribe(() => {
+            return Swal.fire({
+              timer: 4000,
+              toast: true,
+              icon: 'success',
+              timerProgressBar: true,
+              showConfirmButton: false,
+              text: 'Cliente atualizado com sucesso !',
+            });
+          });
+        }
+      } else {
+        this._customerService.create(customer).subscribe(() => {
           return Swal.fire({
             timer: 4000,
             toast: true,
-            icon: 'error',
+            icon: 'success',
             timerProgressBar: true,
             showConfirmButton: false,
-            text: 'Cadastro atualizado com sucesso !',
+            text: 'Cliente criado com sucesso !',
           });
         });
       }
