@@ -54,7 +54,7 @@ export class CustomerService extends ApiHttpClient {
   }
 
   update(body: Customer): Observable<Customer[]> {
-    return this.put<Customer[]>('', body).pipe(
+    return this.put<Customer[]>('asdasd', body).pipe(
       tap((response) => {
         this._customers.next(response);
       })

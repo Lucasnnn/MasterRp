@@ -5,7 +5,7 @@ import { Customer } from 'src/app/shared/models/customer.class';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { Cols } from 'src/app/shared/components/table/table.component';
 import { MatDialog } from '@angular/material/dialog';
-import { NovoColaboradorComponent } from './new-customer/novo-colaborador.component';
+import { NovoColaboradorComponent } from './modals/new-customer/novo-colaborador.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -72,18 +72,18 @@ export class CustomerComponent implements OnInit {
               text: 'Cliente atualizado com sucesso !',
             });
           });
-        }
-      } else {
-        this._customerService.create(customer).subscribe(() => {
-          return Swal.fire({
-            timer: 4000,
-            toast: true,
-            icon: 'success',
-            timerProgressBar: true,
-            showConfirmButton: false,
-            text: 'Cliente criado com sucesso !',
+        } else {
+          this._customerService.create(customer).subscribe(() => {
+            return Swal.fire({
+              timer: 4000,
+              toast: true,
+              icon: 'success',
+              timerProgressBar: true,
+              showConfirmButton: false,
+              text: 'Cliente criado com sucesso !',
+            });
           });
-        });
+        }
       }
     });
   }

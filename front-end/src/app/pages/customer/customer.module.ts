@@ -6,7 +6,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NovoColaboradorComponent } from './new-customer/novo-colaborador.component';
+import { NovoColaboradorComponent } from './modals/new-customer/novo-colaborador.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
