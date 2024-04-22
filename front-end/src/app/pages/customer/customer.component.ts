@@ -50,8 +50,6 @@ export class CustomerComponent implements OnInit {
   }
 
   novo(dados: any) {
-    console.log(dados);
-
     const dialogRef = this._dialog.open(NovoColaboradorComponent, {
       width: 'auto',
       height: 'auto',

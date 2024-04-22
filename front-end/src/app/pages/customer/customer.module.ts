@@ -10,6 +10,7 @@ import { NovoColaboradorComponent } from './modals/new-customer/novo-colaborador
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [CustomerComponent, NovoColaboradorComponent],
@@ -23,6 +24,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    NgxMaskDirective,
   ],
+  providers: [provideNgxMask({})],
 })
 export class CustomerModule {}

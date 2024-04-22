@@ -17,17 +17,27 @@
     <mat-form-field class="col-12" appearance="outline">
       <mat-label>Nome </mat-label>
 
-      <input matInput placeholder="Nome" formControlName="name" />
+      <input
+        matInput
+        placeholder="Nome"
+        formControlName="name"
+        oninput="this.value = this.value.toUpperCase()"
+      />
 
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix>perm_identity</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="col-12" appearance="outline">
       <mat-label> Telefone </mat-label>
 
-      <input matInput placeholder="Telefone" formControlName="telephone" />
+      <input
+        matInput
+        placeholder="Telefone"
+        formControlName="telephone"
+        mask="(00) 0000-0000||(00) 0 0000-0000"
+      />
 
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix>call</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="col-12" appearance="outline">
@@ -35,7 +45,7 @@
 
       <input matInput placeholder="Email" formControlName="email" />
 
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix>alternate_email</mat-icon>
     </mat-form-field>
   </form>
 
